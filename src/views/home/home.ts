@@ -76,4 +76,67 @@ const f1: Fish = {
   swimming: () => {},
 }
 
+type fn1Type = (n1: number, n2?: number) => number
+const fn1: fn1Type = (num1: number = 100, num2?: number) => {
+  num2 = num2 ?? 10
+  return num1 + num2
+}
+
 animalAction(f1)
+
+// 函数重载
+function add(num1: number, num2: number): number
+function add(str1: string, str2: string): number
+
+function add(p1: any, p2: any) {
+  if (typeof p1 === "string" && typeof p2 === "string") {
+    return p1.length + p2.length
+  } else {
+    return p1 + p2
+  }
+}
+
+const res1 = add("str", "str")
+const res2 = add(1, 1)
+console.log("res1", res1)
+console.log("res2", res2)
+
+// const res3 = add("str", 1)
+
+class Animal {
+  private _name: string
+  constructor(name: string) {
+    this._name = name
+  }
+
+  set name(newName: string) {
+    this._name = newName
+  }
+
+  get name() {
+    return this._name
+  }
+}
+
+const a1 = new Animal("human")
+
+console.log("a1.name", a1.name)
+a1.name = "test"
+console.log("a1.name", a1.name)
+
+interface IUserInfo {
+  readonly id: string // 可以定义只读属性
+  username: string
+  friend?: IUserInfo
+}
+
+interface IIndexLanguage {
+  [index: number]: string
+}
+
+const languageList: IIndexLanguage = {
+  0: "C++",
+  1: "Java",
+  2: "Golang",
+  3: "JavaScript",
+}
