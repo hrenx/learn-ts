@@ -13,9 +13,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# yarn file
-yarn.lock
-
 # Editor directories and files
 .idea
 .vscode
@@ -24,6 +21,3 @@ yarn.lock
 *.njsproj
 *.sln
 *.sw?
-
-# cache files
-.eslintcache

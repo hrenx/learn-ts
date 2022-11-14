@@ -1,28 +1,40 @@
 {
   "compilerOptions": {
-    "target": "esnext", // 指定 ECMAScript 目标版本
-    "useDefineForClassFields": true,
-    "module": "commonjs", // 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
-    "moduleResolution": "node", // 选择模块解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
-    "strict": true, // 启用所有严格类型检查选项
-    "jsx": "preserve", // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
-    "sourceMap": true, // 生成相应的 '.map' 文件
-    "resolveJsonModule": true,
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "strictNullChecks": true, // 开启后null和undefined不可以随意赋值
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "lib": [
-      // 指定要包含在编译中的库文件
       "esnext",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
   },
   "include": [
-    // 指定包含文件
     "src/**/*.ts",
-    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "src/config/globalConfig.js"
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
-  "exclude": [] // 指定排除文件
+  "exclude": [
+    "node_modules"
+  ]
 }
