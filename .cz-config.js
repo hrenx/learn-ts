@@ -25,6 +25,7 @@ module.exports = {
     footer: "关联关闭的issue,例如：#31, #34(可选):",
     confirmCommit: "确定提交说明?",
   },
-  useEmoji: true,
-  emojiAlign: "left",
+  subjectLimit: 100,
+  subjectSeparator: ":",
+  typePrefix: "🌻",
 }
