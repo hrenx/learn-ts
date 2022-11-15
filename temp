@@ -60,4 +60,5 @@ module.exports = {
   // defaultIssues: "",
   // defaultScope: "",
   // defaultSubject: "",
+  123: "123",
 }
