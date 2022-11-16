@@ -8,6 +8,7 @@ module.exports = {
     "scope-empty": [2, "never"],
     "scope-max-length": [2, "never", 50],
     "subject-empty": [2, "never"],
+    "subject-case": [2, "never"],
     "subject-max-length": [2, "never", 72],
     "body-empty": [2, "always"],
     "body-max-length": [2, "never", 200],
