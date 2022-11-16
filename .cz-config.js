@@ -1,14 +1,14 @@
 "use strict"
 module.exports = {
   types: [
-    { value: "Feat", name: "🌻 Feat 一个新的特性" },
+    { value: "🌻 Feat", name: "🌻 Feat 一个新的特性" },
     { value: "Better", name: "👍 Better 优化代码" },
     { value: "Fix", name: "🐞 Fix 修复一个Bug" },
     { value: "Performance", name: "🚀 Performance 性能优化" },
     { value: "Doing", name: "🚧 Doing 开发进行中" },
     { value: "Refactor", name: "🔨 Refactor 代码重构, 注意和feat、fix区分开" },
     { value: "Delete", name: "⚠️  Delete 删除代码/文件" },
-    { value: "Test", name: "🧪 Test 测试" },
+    { value: "✅ Test", name: "🧪 Test 测试" },
     { value: "Docs", name: "📝 Docs 变更的只有文档" },
     { value: "Config", name: "⚙️  Config 配置修改(如vite/eslint/prettier)" },
     { value: "Shit", name: "💩 Shit 临时脏代码" },
