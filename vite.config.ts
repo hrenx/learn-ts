@@ -10,22 +10,27 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import { createStyleImportPlugin, ElementPlusResolve } from "vite-plugin-style-import"
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-    createStyleImportPlugin({
-      resolves: [ElementPlusResolve()],
-    }),
-  ],
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+const ViteConfig = defineConfig(({ command }) => {
+  return {
+    base: command === "build" ? "./" : "./",
+    plugins: [
+      vue(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+      createStyleImportPlugin({
+        resolves: [ElementPlusResolve()],
+      }),
+    ],
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+      },
     },
-  },
+  }
 })
+
+export default ViteConfig
