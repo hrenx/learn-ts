@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Home">
     <el-input v-model="ceshi" placeholder="请输入"></el-input>
     <el-button type="primary" @click="handleClick">测试</el-button>
   </div>
@@ -11,6 +11,11 @@ import { ElMessage } from "element-plus"
 const ceshi = ref("")
 
 function handleClick() {
-  ElMessage.error("测试")
+  ElMessage.error(ceshi.value)
 }
 </script>
+<style scoped>
+.Home {
+  display: flex;
+}
+</style>
