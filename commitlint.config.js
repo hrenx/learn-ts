@@ -1,7 +1,11 @@
 module.exports = {
   extends: ["@commitlint/config-conventional", "cz"],
   rules: {
-    "type-enum": [2, "always", ["Feat", "Fix", "Performance", "Doing", "Refactor", "Delete", "Test", "Docs", "Config", "Shit", "Merge", "Upgrade", "Downgrade", "Revert"]],
+    "type-enum": [
+      2,
+      "always",
+      ["Feat", "Better", "Fix", "Performance", "Doing", "Refactor", "Delete", "Test", "Docs", "Config", "Shit", "Merge", "Upgrade", "Downgrade", "Revert"],
+    ],
     "header-max-length": [2, "never", 72],
     "type-empty": [2, "never"],
     "type-case": [2, "always", "pascal-case"],

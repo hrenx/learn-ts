@@ -2,6 +2,7 @@
 module.exports = {
   types: [
     { value: "Feat", name: "🌻 Feat 一个新的特性" },
+    { value: "Better", name: "👍 Better 优化代码" },
     { value: "Fix", name: "🐞 Fix 修复一个Bug" },
     { value: "Performance", name: "🚀 Performance 性能优化" },
     { value: "Doing", name: "🚧 Doing 开发进行中" },
