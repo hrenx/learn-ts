@@ -30,6 +30,7 @@ class Request {
     })
     this.instance.interceptors.response.use(
       (response: AxiosResponse) => {
+        // TODO: 并发请求
         this.loadingInstance?.close()
         return response
       },
@@ -41,12 +42,25 @@ class Request {
   }
 
   // 请求函数
-  async request(config: RequestConfig): Promise<AxiosResponse<any, any>> {
+  async request<T>(config: RequestConfig): Promise<AxiosResponse<T, any>> {
     // 单个请求上的拦截器
     if (config.interceptors?.requestInterceptor) config.interceptors.requestInterceptor(config)
     const response: AxiosResponse = await this.instance.request(config)
     if (config.interceptors?.responseInterceptor) config.interceptors.responseInterceptor(response)
-    return response
+    return Promise.resolve(response)
+  }
+
+  get<T>(url: string, params: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "GET", url, params, interceptors })
+  }
+  post<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "POST", url, data, interceptors })
+  }
+  delete<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "DELETE", url, data, interceptors })
+  }
+  patch<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "PATCH", url, data, interceptors })
   }
 }
 

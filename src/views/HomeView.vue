@@ -16,12 +16,17 @@ function handleClick() {
   ElMessage.error(ceshi.value)
 }
 
+interface DataType {
+  headers: Object
+}
+
 async function getRequest() {
-  const res = await http.request({
-    method: "GET",
-    url: "/get",
-  })
-  console.log("res", res)
+  // const res = await http.request<DataType>({
+  //   method: "GET",
+  //   url: "/get",
+  // })
+  const res = await http.get<DataType>("/get", { ceshi: "123" })
+  console.log("res", res.data)
 }
 </script>
 <style scoped>
