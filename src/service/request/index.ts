@@ -1,14 +1,21 @@
 import axios from "axios"
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios"
 import type { RequestConfig, Interceptors } from "./type"
+import { ElLoading } from "element-plus"
+import type { LoadingInstance } from "element-plus/lib/components/loading/src/loading"
+
+const DEFAULT_LOADING = false
 
 class Request {
   instance: AxiosInstance
   interceptors: Interceptors | undefined
+  loadingInstance?: LoadingInstance
+  showLoading?: boolean
 
-  constructor(config: RequestConfig) {
+  constructor(config: RequestConfig = {}) {
     this.instance = axios.create(config)
-    this.interceptors = config.interceptors
+    this.interceptors = config?.interceptors
+    this.showLoading = config?.showLoading ?? DEFAULT_LOADING
 
     // 实例的拦截器
     if (this.interceptors !== undefined) {
@@ -17,10 +24,19 @@ class Request {
     }
 
     // 类全局的拦截器
-    this.instance.interceptors.request.use((config: AxiosRequestConfig) => config)
+    this.instance.interceptors.request.use((config: AxiosRequestConfig) => {
+      if (this.showLoading) this.loadingInstance = ElLoading.service({ fullscreen: true, text: "请求中", background: "rgba(0,0,0,.3)" })
+      return config
+    })
     this.instance.interceptors.response.use(
-      (response: AxiosResponse) => response,
-      (err: any) => err
+      (response: AxiosResponse) => {
+        this.loadingInstance?.close()
+        return response
+      },
+      (error: any) => {
+        this.loadingInstance?.close()
+        return error
+      }
     )
   }
 
