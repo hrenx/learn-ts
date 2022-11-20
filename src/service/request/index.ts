@@ -50,17 +50,17 @@ class Request {
     return Promise.resolve(response)
   }
 
-  get<T>(url: string, params: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
-    return this.request<T>({ method: "GET", url, params, interceptors })
+  get<T>(url: string, params: object): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "GET", url, params })
   }
-  post<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
-    return this.request<T>({ method: "POST", url, data, interceptors })
+  post<T>(url: string, data: object): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "POST", url, data })
   }
-  delete<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
-    return this.request<T>({ method: "DELETE", url, data, interceptors })
+  delete<T>(url: string, data: object): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "DELETE", url, data })
   }
-  patch<T>(url: string, data: object, interceptors?: Interceptors): Promise<AxiosResponse<T, any>> {
-    return this.request<T>({ method: "PATCH", url, data, interceptors })
+  patch<T>(url: string, data: object): Promise<AxiosResponse<T, any>> {
+    return this.request<T>({ method: "PATCH", url, data })
   }
 }
 
