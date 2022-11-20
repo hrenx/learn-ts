@@ -45,7 +45,7 @@ class Request {
   async request<T>(config: RequestConfig): Promise<AxiosResponse<T, any>> {
     // 单个请求上的拦截器
     if (config.interceptors?.requestInterceptor) config.interceptors.requestInterceptor(config)
-    const response: AxiosResponse = await this.instance.request(config)
+    const response: AxiosResponse<T, any> = await this.instance.request(config)
     if (config.interceptors?.responseInterceptor) config.interceptors.responseInterceptor(response)
     return Promise.resolve(response)
   }
